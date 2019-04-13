@@ -13,9 +13,9 @@ def print_help():
     print("\tIQ1 minimum IQ")
     print("\tIQ2 maximum IQ")
 
-def first_calcul(x, tab1):
-    res = exp(-pow((x - tab1[0]) / tab1[1], 2) / 2) / (tab1[1] * sqrt(2 * pi))
-#    print(x, format(res * 100, ".2f"))
+def first_calcul(x, tab):
+    res = (1 / (float(tab[1]) * sqrt(2 * pi))) * exp(-0.5 * pow((float(tab[0]) - float(x)) / float(tab[1]), 2))
+    print(x, format(round(res, 5), ".5f"))
     return res
 
 def error_handling():

@@ -18,12 +18,22 @@ def first_calcul(x, tab):
     print(x, format(round(res, 5), ".5f"))
     return res
 
+def inferior_percent(tab):
+    i = 0.0
+    res = 0.0
+    while (i < tab[2]):
+        res = res + (1 / (float(tab[1]) * sqrt(2 * pi))) * exp(-0.5 * pow((float(i) - float(tab[0])) / float(tab[1]), 2))
+        i = i + 0.01
+    print (format(res, ".1f"), "% of people have an IQ inferior to ", tab[2], sep="")
+
 def error_handling():
     tab = []
     i = 1
     try:
         while (i < len(sys.argv)):
             tab.append(int(sys.argv[i]))
+            if (tab[i-1] < 0 or tab[i-1] > 200):
+                sys.exit(84)
             i += 1
     except:
         print_help()
@@ -38,7 +48,7 @@ def loopIQ(tab):
             first_calcul(x, tab)
             x += 1
     elif len(tab) == 3:
-        print("FUCK", tab)
+        inferior_percent(tab)
     elif len(tab) == 4:
         print("FUCK2", tab)
     i = 0

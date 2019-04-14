@@ -19,7 +19,13 @@ def first_calcul(x, tab):
     return res
 
 def test_percent(tab, index):
-    
+    res = 0.0
+    max = tab[len(tab) - 1]
+    while (index < max):
+        res = res + (1 / (float(tab[1]) * sqrt(2 * pi))) * exp(-0.5 * pow((float(index) - float(tab[0])) / float(tab[1]), 2))
+        index = index + 0.01
+    print (format(res, ".1f"), "% of people have an IQ inferior to ", tab[2], sep="")
+
 def inferior_percent(tab):
     i = 0.0
     res = 0.0
@@ -58,10 +64,9 @@ def loopIQ(tab):
             first_calcul(x, tab)
             x += 1
     elif len(tab) == 3:
-        inferior_percent(tab)
+        test_percent(tab, 0.0)
     elif len(tab) == 4:
-        middle_percent(tab)
-    i = 0
+        test_percent(tab, tab[2])
 
 def main():
     if len(sys.argv) >= 3 and len(sys.argv) <= 5:

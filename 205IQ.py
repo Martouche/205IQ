@@ -18,6 +18,8 @@ def first_calcul(x, tab):
     print(x, format(round(res, 5), ".5f"))
     return res
 
+def test_percent(tab, index):
+    
 def inferior_percent(tab):
     i = 0.0
     res = 0.0
@@ -25,6 +27,14 @@ def inferior_percent(tab):
         res = res + (1 / (float(tab[1]) * sqrt(2 * pi))) * exp(-0.5 * pow((float(i) - float(tab[0])) / float(tab[1]), 2))
         i = i + 0.01
     print (format(res, ".1f"), "% of people have an IQ inferior to ", tab[2], sep="")
+
+def middle_percent(tab):
+    i = float(tab[2])
+    res = 0.0
+    while (i < tab[3]):
+        res = res + (1 / (float(tab[1]) * sqrt(2 * pi))) * exp(-0.5 * pow((float(i) - float(tab[0])) / float(tab[1]), 2))
+        i = i + 0.01
+    print (format(res, ".1f"), "% of people have an IQ  between ", tab[2]," and ", tab[3], sep="")
 
 def error_handling():
     tab = []
@@ -50,7 +60,7 @@ def loopIQ(tab):
     elif len(tab) == 3:
         inferior_percent(tab)
     elif len(tab) == 4:
-        print("FUCK2", tab)
+        middle_percent(tab)
     i = 0
 
 def main():

@@ -43,7 +43,6 @@ def error_handling():
 def loopIQ(tab):
     x = 0
     if len(tab) == 2:
-        print(tab)
         while (x <= 200):
             first_calcul(x, tab)
             x += 1
@@ -58,9 +57,8 @@ def loopIQ(tab):
 def main():
     if len(sys.argv) >= 3 and len(sys.argv) <= 5:
         arg = error_handling()
-    else:
-        return 84
-    loopIQ(arg)
-    return 0
+        loopIQ(arg)
+        sys.exit(0)
+    sys.exit(84)
 
 main()
